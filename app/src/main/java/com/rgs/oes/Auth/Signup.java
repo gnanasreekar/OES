@@ -1,4 +1,4 @@
-package com.rgs.oes;
+package com.rgs.oes.Auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -26,6 +26,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.rgs.oes.Home;
+import com.rgs.oes.R;
 
 import java.util.Date;
 

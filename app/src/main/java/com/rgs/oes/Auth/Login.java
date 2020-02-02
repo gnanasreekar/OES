@@ -1,4 +1,4 @@
-package com.rgs.oes;
+package com.rgs.oes.Auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rgs.oes.Home;
+import com.rgs.oes.R;
 
 public class Login extends AppCompatActivity {
 
@@ -52,6 +53,9 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
         login_username = findViewById(R.id.username);
         login_password = findViewById(R.id.password);
         signup = (TextView) findViewById(R.id.sign_up);
@@ -63,6 +67,7 @@ public class Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+                    Toast.makeText(Login.this, "PLeaes wait...", Toast.LENGTH_SHORT).show();
                     new Firebaseretrive().execute();
                 } else {
                     firebaseAuth.removeAuthStateListener(authStateListener);
@@ -120,6 +125,12 @@ public class Login extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(authStateListener);
+    }
+
     private class Firebaseretrive extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
@@ -172,13 +183,11 @@ public class Login extends AppCompatActivity {
 
                     mCountDownTimer = new CountDownTimer(4000, 1000) {
                         public void onTick(long millisUntilFinished) {
-                            if ((millisUntilFinished / 1000) == 1){
-                                logintext.setText("Getting Data..");
-                            }
+
                         }
 
                         public void onFinish() {
-                            startActivity(new Intent(Login.this, MainActivity.class));
+                            startActivity(new Intent(Login.this, Home.class));
                         }
                     }.start();
 
