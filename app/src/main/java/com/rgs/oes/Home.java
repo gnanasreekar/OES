@@ -161,6 +161,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         } else if (id == R.id.nav_signout){
             showsignoutDialog();
         }
+        else if (id == R.id.nav_test){
+            startActivity(new Intent(Home.this , Test.class));
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
