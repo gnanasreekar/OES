@@ -9,6 +9,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -132,7 +133,6 @@ public class Signup extends AppCompatActivity {
                                 editor.putString("gender" , Gender);
                                 editor.putString("year" , Year);
                                 editor.putString("branch" , Branch);
-
                                 editor.apply();
 
                                 //To save data in Firebase Database
@@ -147,6 +147,7 @@ public class Signup extends AppCompatActivity {
                                 databaseReference.child("Branch").setValue(Branch);
                                 databaseReference.child("UID").setValue(firebaseAuth.getUid());
                                 databaseReference.child("Date").setValue(s);
+                                databaseReference.child("Role").setValue(0);
                                 showaccountcreatedDialog();
 
                             }
@@ -179,8 +180,8 @@ public class Signup extends AppCompatActivity {
 
     private void GenderDialog() {
         Gender = gender[0];
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Phone Ringtone");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this , R.style.ALertdialogmee);
+        builder.setTitle("Gender");
         builder.setSingleChoiceItems(gender, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -200,8 +201,8 @@ public class Signup extends AppCompatActivity {
 
     private void YearDialog() {
         Year = year[0];
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Phone Ringtone");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this , R.style.ALertdialogmee);
+        builder.setTitle("Year");
         builder.setSingleChoiceItems(year, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -221,8 +222,8 @@ public class Signup extends AppCompatActivity {
 
     private void BranchDialog() {
         Branch = branch[0];
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Phone Ringtone");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this , R.style.ALertdialogmee);
+        builder.setTitle("Branch");
         builder.setSingleChoiceItems(branch, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
