@@ -99,7 +99,7 @@ public class Test extends AppCompatActivity {
 
     public void starttest(int pos){
 
-        if (pos <= 3) {
+        if (pos <= MAX_STEP-1) {
             quest_tv.setText(que.get(pos));
             Ar.setText(A.get(pos));
             Br.setText(B.get(pos));
@@ -156,14 +156,10 @@ public class Test extends AppCompatActivity {
             ViewAnimation.fadeOutIn(quest_tv);
         }
 
-pos++;
-        Log.d("Fasak4" , pos+"");
-
-        if (current_step >= MAX_STEP){
+        if (current_step >= MAX_STEP+1){
             Toast.makeText(this, "Last question", Toast.LENGTH_SHORT).show();
         } else {
-            String str_progress = String.format(getString(R.string.step_of), current_step, MAX_STEP);
-            quest_tv.setText(str_progress);
+            pos++;
         }
         progressBar.setProgress(current_step);
         starttest(pos);
@@ -177,11 +173,22 @@ pos++;
             ViewAnimation.fadeOutIn(quest_tv);
         }
 
-        pos--;
-        String str_progress = String.format(getString(R.string.step_of), current_step, MAX_STEP);
-        quest_tv.setText(str_progress);
+        Log.d("Fasakcurrentstep" , current_step+"");
+        Log.d("Fasakmaxstep" , MAX_STEP+"");
+
+        if (current_step <= 1){
+            Toast.makeText(this, "Last question", Toast.LENGTH_SHORT).show();
+        } else {
+            pos--;
+        }
+
         progressBar.setProgress(current_step);
-        starttest(pos);
-        setans(pos-1);
+        if (pos >= 0){
+            starttest(pos);
+            setans(pos-1);
+        } else {
+            Toast.makeText(this, "First Question", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
