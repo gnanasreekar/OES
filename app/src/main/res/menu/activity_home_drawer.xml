@@ -24,6 +24,11 @@
             android:id="@+id/nav_test"
             android:icon="@drawable/ic_notifications_black_24dp"
             android:title="Test" />
+        <item
+            android:id="@+id/nav_teacher"
+            android:icon="@drawable/ic_school_black_24dp"
+            android:title="Teacher" />
+
     </group>
 
     <item android:title="Account">

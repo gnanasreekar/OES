@@ -35,15 +35,12 @@ public class Login extends AppCompatActivity {
 
     public EditText login_username, login_password;
     Button button_login;
-    TextView signup, logintext;
+    TextView signup;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     DatabaseReference databaseReference;
-    static public String Name, Rollno, Phoneno, Fullname, Email, Gender, Year, Branch, UID;
+    static public String Name, Rollno, Phoneno, Fullname, Email, Gender, Year, Branch, UID, Role;
     CountDownTimer mCountDownTimer;
-    int i = 0;
-    String auth = "0",admin, rupee;
-    LinearLayout linearLayout,lyt_progress;
     String userEmail;
 
 
@@ -67,7 +64,7 @@ public class Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(Login.this, "PLeaes wait...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Please wait...", Toast.LENGTH_SHORT).show();
                     new Firebaseretrive().execute();
                 } else {
                     firebaseAuth.removeAuthStateListener(authStateListener);
@@ -152,6 +149,7 @@ public class Login extends AppCompatActivity {
                         Gender = dataSnapshot.child("Gender").getValue().toString();
                         Year = dataSnapshot.child("Year").getValue().toString();
                         Branch = dataSnapshot.child("Branch").getValue().toString();
+                        Role = dataSnapshot.child("Role").getValue().toString();
 
                     } else {
                         Name = "NO data found";
@@ -163,6 +161,7 @@ public class Login extends AppCompatActivity {
                         Gender = "NO data found";
                         Year = "NO data found";
                         Branch = "NO data found";
+                        Role = "0";
                     }
 
                     //Storing data to display in the Nav bar and in the app
@@ -178,6 +177,7 @@ public class Login extends AppCompatActivity {
                     editor.putString("year" , Year);
                     editor.putString("branch" , Branch);
                     editor.putString("UID" , UID);
+                    editor.putString("Role" , Role);
                     editor.apply();
 
 
@@ -188,6 +188,7 @@ public class Login extends AppCompatActivity {
 
                         public void onFinish() {
                             startActivity(new Intent(Login.this, Home.class));
+                            finish();
                         }
                     }.start();
 

@@ -57,8 +57,6 @@ public class Signup extends AppCompatActivity {
      EditText passwordSignup;
     FirebaseAuth firebaseAuth;
     CharSequence s;
-
-
     View parent_view;
 
     @Override

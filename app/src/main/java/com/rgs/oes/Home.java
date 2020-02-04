@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,27 +41,15 @@ import java.util.Locale;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    FloatingActionButton fab;
     NavigationView navView;
     DrawerLayout drawerLayout;
-    LinearLayout warninglayout;
-    TextView nav_namec, nav_emailc, nav_rollno, today_powerusage_tv, months_powerusage_tv, today_cost, month_cost, generator_usagetv, date_tv, warnings, generator_today,costfortodat;
-    int dpb, flag = 0;
-    Integer TEC;
-    float Todayscos, Version;
+    TextView nav_namec, nav_emailc, nav_rollno;
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
-    String generatorusage;
-    NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
     static Home instance;
-    CountDownTimer mCountDownTimer;
-    View parent_view;
-    long date_ship_millis;
-    RelativeLayout nav_layout;
-    Menu menuList;
-    MenuItem item;
     DatabaseReference databaseReference;
     CharSequence s;
+    String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +76,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
 
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
+
+        role = sharedPreferences.getString("Role","0");
+        if(role.equals("0")){
+            navView = (NavigationView) findViewById(R.id.nav_view);
+            Menu nav_Menu = navView.getMenu();
+            nav_Menu.findItem(R.id.nav_teacher).setVisible(false);
+        }
 
         navviewdata();
 
@@ -148,6 +144,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
@@ -160,15 +157,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         } else if (id == R.id.nav_signout){
             showsignoutDialog();
-        }
-        else if (id == R.id.nav_test){
+        } else if (id == R.id.nav_test){
             startActivity(new Intent(Home.this , Test.class));
+        } else if (id == R.id.nav_teacher){
+            Toast.makeText(instance, "Teacher", Toast.LENGTH_SHORT).show();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
     //Exit Dialog
     private void showexitDialog() {
@@ -218,8 +215,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         dialog.show();
         dialog.getWindow().setAttributes(lp);
     }
-
-    static int i = 0;
 
     public static String getFormattedDateSimple(Long dateTime) {
         SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");

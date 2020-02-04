@@ -1,5 +1,7 @@
 package com.rgs.oes;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -79,6 +81,16 @@ public class ViewAnimation {
 
         a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
         v.startAnimation(a);
+    }
+
+    public static void fadeOutIn(View view) {
+        view.setAlpha(0.f);
+        AnimatorSet animatorSet = new AnimatorSet();
+        ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(view, "alpha", 0.f, 0.5f, 1.f);
+        ObjectAnimator.ofFloat(view, "alpha", 0.f).start();
+        animatorAlpha.setDuration(500);
+        animatorSet.play(animatorAlpha);
+        animatorSet.start();
     }
 
 }
