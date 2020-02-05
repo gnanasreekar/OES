@@ -32,7 +32,7 @@ public class Events extends AppCompatActivity {
         setContentView(R.layout.activity_events);
         setTitle("Events");
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
+        adapter = new MyAdapter(Events.this);
 
         rv=(RecyclerView)findViewById(R.id.rec_view);
         rv.setHasFixedSize(true);
@@ -46,18 +46,10 @@ public class Events extends AppCompatActivity {
                 listData.clear();
 
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-
-                    String ques = childDataSnapshot.child("q").getValue().toString();
-                    String a = childDataSnapshot.child("a").getValue().toString();
-                    String b = childDataSnapshot.child("b").getValue().toString();
-                    String c = childDataSnapshot.child("c").getValue().toString();
-                    String d = childDataSnapshot.child("d").getValue().toString();
-                    String ans = childDataSnapshot.child("ans").getValue().toString();
                     String key = childDataSnapshot.getKey();
-                    Toast.makeText(Events.this, key, Toast.LENGTH_SHORT).show();
-                    listData.add(new Model(ques , a, b, c, d, ans));
+                    listData.add(new Model(key));
                 }
-                adapter=new MyAdapter(listData);
+                adapter.setlist(listData);
                 rv.setAdapter(adapter);
 
                 // get total available quest

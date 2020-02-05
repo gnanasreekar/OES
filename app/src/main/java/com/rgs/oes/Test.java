@@ -3,6 +3,7 @@ package com.rgs.oes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +47,7 @@ public class Test extends AppCompatActivity {
     private RadioGroup radioquestionGroup;
     private RadioButton radioSexButton;
     RadioButton Ar,Br,Cr,Dr;
+    String keyi;
 
 
     @Override
@@ -61,12 +63,15 @@ public class Test extends AppCompatActivity {
         setTitle("Progress");
         getSupportActionBar().setSubtitle("");
 
+        Intent intent = getIntent();
+        keyi = intent.getStringExtra("testid");
+
         Ar = findViewById(R.id.a);
         Br = findViewById(R.id.b);
         Cr = findViewById(R.id.c);
         Dr = findViewById(R.id.d);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Tests").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Tests/"+ keyi).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -83,8 +88,6 @@ public class Test extends AppCompatActivity {
                     D.add(childDataSnapshot.child("d").getValue().toString());
                     ans.add(childDataSnapshot.child("ans").getValue().toString());
                     key.add(childDataSnapshot.getKey());
-
-                    Log.d("Hello" , String.valueOf(childDataSnapshot.getKey()));
                 }
                 steppedprogress();
                 starttest(0);
