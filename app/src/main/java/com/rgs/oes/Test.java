@@ -36,7 +36,7 @@ public class Test extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView quest_tv;
     int MAX_STEP, selectedId, pos = 0;
-     int current_step = 1;
+    int current_step = 1;
     ArrayList<String> que = new ArrayList<String>();
     ArrayList<String> A = new ArrayList<String>();
     ArrayList<String> B = new ArrayList<String>();
