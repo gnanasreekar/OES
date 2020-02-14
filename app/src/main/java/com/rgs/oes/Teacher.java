@@ -39,7 +39,8 @@ public class Teacher extends AppCompatActivity {
     private AppCompatEditText o3;
     private AppCompatEditText o4;
     private AppCompatEditText ans;
-    private AppCompatEditText testname, quesno;
+    private AppCompatEditText testname;
+    int i = 1;
     Button done;
 
 
@@ -58,7 +59,6 @@ public class Teacher extends AppCompatActivity {
         ans = (AppCompatEditText) findViewById(R.id.ans);
         done = findViewById(R.id.button_done);
         testname = findViewById(R.id.testname);
-        quesno = findViewById(R.id.questionnumber);
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,9 +66,6 @@ public class Teacher extends AppCompatActivity {
                 if (question.getText().toString().isEmpty()) {
                     question.setError("Enter Question!");
                     question.requestFocus();
-                } else if (quesno.getText().toString().isEmpty()) {
-                    quesno.setError("Provide NUmber!");
-                    quesno.requestFocus();
                 }else if (testname.getText().toString().isEmpty()) {
                     testname.setError("Provide Testname!");
                     testname.requestFocus();
@@ -90,13 +87,24 @@ public class Teacher extends AppCompatActivity {
                 } else if(!(question.getText().toString().isEmpty() && o1.getText().toString().isEmpty() && o2.getText().toString().isEmpty() && o3.getText().toString().isEmpty() && o4.getText().toString().isEmpty() && ans.getText().toString().isEmpty())){
                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Events/" + testname.getText().toString());
                     databaseReference.setValue(testname.getText().toString());
-                    DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("Tests/" + testname.getText().toString()+"/"+quesno.getText().toString());
+                    DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("Tests/" + testname.getText().toString()+"/"+i);
                     databaseReference2.child("q").setValue(question.getText().toString());
                     databaseReference2.child("a").setValue(o1.getText().toString());
                     databaseReference2.child("b").setValue(o2.getText().toString());
                     databaseReference2.child("c").setValue(o3.getText().toString());
                     databaseReference2.child("d").setValue(o4.getText().toString());
                     databaseReference2.child("ans").setValue(ans.getText().toString());
+                    i++;
+                    //TODO: Disc add cheiyale 😁😁
+
+                    question.setHint("Enter Question");
+                    o1.setHint("saofina");
+                    o2.setHint("saofina");
+                    o3.setHint("saofina");
+                    o4.setHint("saofina");
+                    ans.setHint("saofina");
+
+                    Toast.makeText(Teacher.this, "Ipoindhe ra babu 😂😂😂", Toast.LENGTH_SHORT).show();
                 }
             }
         });
