@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/dark"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -28,564 +28,224 @@
             android:paddingLeft="@dimen/spacing_large"
             android:paddingRight="@dimen/spacing_large">
 
-            <!--top line-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
 
-            <LinearLayout
-                android:layout_width="@dimen/spacing_xlarge"
-                android:layout_height="@dimen/spacing_mlarge"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
 
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/grey_10" />
-
-            </LinearLayout>
-
-            <!--section title-->
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:textColorHint="@color/grey_40">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatEditText
 
-                    <RelativeLayout
-                        android:id="@+id/step_title"
-                        android:layout_width="@dimen/spacing_xlarge"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:background="@drawable/shape_round_solid"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@android:color/white" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_10"
-                        android:minHeight="?attr/actionBarSize" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/spacing_large"
-                    android:layout_height="0dp" />
-
-                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="?attr/actionBarSize"
-                    android:orientation="vertical">
+                    android:layout_height="70dp"
+                    android:hint="Test name"
+                    android:id="@+id/testname"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
 
-                    <TextView
-                        android:id="@+id/tv_label_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:gravity="center_vertical"
-                        android:onClick="clickLabel"
-                        android:paddingLeft="@dimen/spacing_small"
-                        android:paddingRight="@dimen/spacing_small"
-                        android:text="Title"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/grey_90" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <LinearLayout
-                        android:id="@+id/lyt_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/spacing_large"
-                        android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
 
-                        <EditText
-                            android:id="@+id/et_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Event title" />
-
-                        <Button
-                            android:id="@+id/bt_continue_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:minWidth="0dp"
-                            android:onClick="clickAction"
-                            android:text="CONTINUE"
-                            android:theme="@style/Button.Primary" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!--section description-->
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:textColorHint="@color/grey_40">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatEditText
 
-                    <RelativeLayout
-                        android:id="@+id/step_description"
-                        android:layout_width="@dimen/spacing_xlarge"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:background="@drawable/shape_round_solid"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@android:color/white" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_10" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/spacing_large"
-                    android:layout_height="0dp" />
-
-                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="?attr/actionBarSize"
-                    android:orientation="vertical">
+                    android:layout_height="70dp"
+                    android:hint="Question number"
+                    android:id="@+id/questionnumber"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
 
-                    <TextView
-                        android:id="@+id/tv_label_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:gravity="center_vertical"
-                        android:onClick="clickLabel"
-                        android:paddingLeft="@dimen/spacing_small"
-                        android:paddingRight="@dimen/spacing_small"
-                        android:text="Description"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/grey_90" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <LinearLayout
-                        android:id="@+id/lyt_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/spacing_large"
-                        android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
 
-                        <EditText
-                            android:id="@+id/et_description"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="top"
-                            android:hint="Event description"
-                            android:lines="4" />
-
-                        <Button
-                            android:id="@+id/bt_continue_description"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:minWidth="0dp"
-                            android:onClick="clickAction"
-                            android:text="CONTINUE"
-                            android:theme="@style/Button.Primary" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!--section time-->
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:background="@drawable/txt_area_dark_yellow"
+                android:padding="@dimen/spacing_large"
+                android:textColorHint="@color/grey_40">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatEditText
 
-                    <RelativeLayout
-                        android:id="@+id/step_time"
-                        android:layout_width="@dimen/spacing_xlarge"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:background="@drawable/shape_round_solid"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@android:color/white" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_10" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/spacing_large"
-                    android:layout_height="0dp" />
-
-                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="?attr/actionBarSize"
-                    android:orientation="vertical">
+                    android:layout_height="180dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="Question"
+                    android:inputType="textMultiLine"
+                    android:maxLines="12"
+                    android:minLines="7"
+                    android:id="@+id/question"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
 
-                    <TextView
-                        android:id="@+id/tv_label_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:gravity="center_vertical"
-                        android:onClick="clickLabel"
-                        android:paddingLeft="@dimen/spacing_small"
-                        android:paddingRight="@dimen/spacing_small"
-                        android:text="Time"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/grey_90" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <LinearLayout
-                        android:id="@+id/lyt_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/spacing_large"
-                        android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
 
-                        <TextView
-                            android:id="@+id/tv_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="?attr/selectableItemBackground"
-                            android:clickable="true"
-                            android:text="00:00"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                            android:textColor="@color/grey_60" />
-
-                        <Button
-                            android:id="@+id/bt_continue_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:minWidth="0dp"
-                            android:onClick="clickAction"
-                            android:text="CONTINUE"
-                            android:theme="@style/Button.Primary" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!--section date-->
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:background="@drawable/txt_area_dark_yellow"
+                android:padding="@dimen/spacing_large"
+                android:textColorHint="@color/grey_40">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatEditText
 
-                    <RelativeLayout
-                        android:id="@+id/step_date"
-                        android:layout_width="@dimen/spacing_xlarge"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:background="@drawable/shape_round_solid"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@android:color/white" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_10" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/spacing_large"
-                    android:layout_height="0dp" />
-
-                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="?attr/actionBarSize"
-                    android:orientation="vertical">
+                    android:layout_height="70dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="Description"
+                    android:inputType="textMultiLine"
+                    android:maxLines="12"
+                    android:minLines="7"
+                    android:id="@+id/description"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
 
-                    <TextView
-                        android:id="@+id/tv_label_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:gravity="center_vertical"
-                        android:onClick="clickLabel"
-                        android:paddingLeft="@dimen/spacing_small"
-                        android:paddingRight="@dimen/spacing_small"
-                        android:text="Date"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/grey_90" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <LinearLayout
-                        android:id="@+id/lyt_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/spacing_large"
-                        android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
 
-                        <TextView
-                            android:id="@+id/tv_date"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="?attr/selectableItemBackground"
-                            android:clickable="true"
-                            android:text="01 Jan 2000"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                            android:textColor="@color/grey_60" />
 
-                        <Button
-                            android:id="@+id/bt_continue_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:minWidth="0dp"
-                            android:onClick="clickAction"
-                            android:text="CONTINUE"
-                            android:theme="@style/Button.Primary" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!--section title-->
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:textColorHint="@color/grey_40">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatEditText
 
-                    <RelativeLayout
-                        android:id="@+id/step_question"
-                        android:layout_width="@dimen/spacing_xlarge"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:background="@drawable/shape_round_solid"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@android:color/white" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_10"
-                        android:minHeight="?attr/actionBarSize" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/spacing_large"
-                    android:layout_height="0dp" />
-
-                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="?attr/actionBarSize"
-                    android:orientation="vertical">
+                    android:layout_height="70dp"
+                    android:hint="Option 1"
+                    android:id="@+id/o1"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
 
-                    <TextView
-                        android:id="@+id/tv_label_quetion"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:gravity="center_vertical"
-                        android:onClick="clickLabel"
-                        android:paddingLeft="@dimen/spacing_small"
-                        android:paddingRight="@dimen/spacing_small"
-                        android:text="Question"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/grey_90" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <LinearLayout
-                        android:id="@+id/lyt_quesion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/spacing_large"
-                        android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
 
-                        <EditText
-                            android:id="@+id/et_question"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Event title" />
 
-                        <Button
-                            android:id="@+id/bt_continue_question"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:minWidth="0dp"
-                            android:onClick="clickAction"
-                            android:text="CONTINUE"
-                            android:theme="@style/Button.Primary" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!--section confirmation-->
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:textColorHint="@color/grey_40">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatEditText
 
-                    <RelativeLayout
-                        android:id="@+id/step_confirmation"
-                        android:layout_width="@dimen/spacing_xlarge"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:background="@drawable/shape_round_solid"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@android:color/white" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey_10" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/spacing_large"
-                    android:layout_height="0dp" />
-
-                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="?attr/actionBarSize"
-                    android:orientation="vertical">
+                    android:layout_height="70dp"
+                    android:hint="Option 2"
+                    android:id="@+id/o2"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
 
-                    <TextView
-                        android:id="@+id/tv_label_confirmation"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xlarge"
-                        android:gravity="center_vertical"
-                        android:onClick="clickLabel"
-                        android:paddingLeft="@dimen/spacing_small"
-                        android:paddingRight="@dimen/spacing_small"
-                        android:text="Confirmation"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/grey_90" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <LinearLayout
-                        android:id="@+id/lyt_confirmation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/spacing_large"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/bt_add_event"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:minWidth="0dp"
-                            android:onClick="clickAction"
-                            android:text="ADD EVENT"
-                            android:theme="@style/Button.Primary" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
 
 
-                    </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_40">
 
-                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatEditText
 
-            </LinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Option 3"
+                    android:id="@+id/o3"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
 
-            <!--bottom line-->
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="@dimen/spacing_xlarge"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
 
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/grey_10" />
 
-            </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_40">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Option 4"
+                    android:id="@+id/o4"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_40">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Answer"
+                    android:id="@+id/ans"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+            <Button
+                android:id="@+id/button_done"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:background="@drawable/btn_rounded_accent"
+                android:text="Done!"
+                android:textColor="@android:color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
 
         </LinearLayout>
 

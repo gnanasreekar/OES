@@ -81,7 +81,7 @@ public class Test extends AppCompatActivity {
 
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
 
-                    que.add(childDataSnapshot.child("q").getValue().toString());
+                        que.add(childDataSnapshot.child("q").getValue().toString());
                     A.add(childDataSnapshot.child("a").getValue().toString());
                     B.add(childDataSnapshot.child("b").getValue().toString());
                     C.add(childDataSnapshot.child("c").getValue().toString());
