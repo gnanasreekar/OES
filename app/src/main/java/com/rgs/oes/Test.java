@@ -81,7 +81,7 @@ public class Test extends AppCompatActivity {
 
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
 
-                        que.add(childDataSnapshot.child("q").getValue().toString());
+                    que.add(childDataSnapshot.child("q").getValue().toString());
                     A.add(childDataSnapshot.child("a").getValue().toString());
                     B.add(childDataSnapshot.child("b").getValue().toString());
                     C.add(childDataSnapshot.child("c").getValue().toString());
@@ -175,9 +175,6 @@ public class Test extends AppCompatActivity {
             current_step = progress;
             ViewAnimation.fadeOutIn(quest_tv);
         }
-
-        Log.d("Fasakcurrentstep" , current_step+"");
-        Log.d("Fasakmaxstep" , MAX_STEP+"");
 
         if (current_step <= 1){
             Toast.makeText(this, "Last question", Toast.LENGTH_SHORT).show();

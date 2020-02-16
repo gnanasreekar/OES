@@ -56,6 +56,27 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_40">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Marks"
+                    android:gravity="right"
+                    android:id="@+id/marks"
+                    android:textColor="@android:color/white"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/txt_area_dark_yellow"
                 android:padding="@dimen/spacing_large"
                 android:textColorHint="@color/grey_40">

@@ -38,7 +38,7 @@ public class Teacher extends AppCompatActivity {
     private AppCompatEditText o2;
     private AppCompatEditText o3;
     private AppCompatEditText o4;
-    private AppCompatEditText ans;
+    private AppCompatEditText ans, marks;
     private AppCompatEditText testname;
     int i = 1;
     Button done;
@@ -57,6 +57,7 @@ public class Teacher extends AppCompatActivity {
         o3 = (AppCompatEditText) findViewById(R.id.o3);
         o4 = (AppCompatEditText) findViewById(R.id.o4);
         ans = (AppCompatEditText) findViewById(R.id.ans);
+        marks = findViewById(R.id.marks);
         done = findViewById(R.id.button_done);
         testname = findViewById(R.id.testname);
 
@@ -81,6 +82,9 @@ public class Teacher extends AppCompatActivity {
                 }else if (o4.getText().toString().isEmpty()) {
                     o4.setError("Provide Option!");
                     o4.requestFocus();
+                } else if (marks.getText().toString().isEmpty()) {
+                    marks.setError("Provide Marks!");
+                    marks.requestFocus();
                 }else if (ans.getText().toString().isEmpty()) {
                     ans.setError("Provide Ans!");
                     ans.requestFocus();
@@ -94,6 +98,7 @@ public class Teacher extends AppCompatActivity {
                     databaseReference2.child("c").setValue(o3.getText().toString());
                     databaseReference2.child("d").setValue(o4.getText().toString());
                     databaseReference2.child("ans").setValue(ans.getText().toString());
+                    databaseReference2.child("marks").setValue(marks.getText().toString());
                     i++;
                     //TODO: Disc add cheiyale 😁😁
 
@@ -104,7 +109,7 @@ public class Teacher extends AppCompatActivity {
                     o4.setHint("saofina");
                     ans.setHint("saofina");
 
-                    Toast.makeText(Teacher.this, "Ipoindhe ra babu 😂😂😂", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Teacher.this, "Uploaded successfully", Toast.LENGTH_SHORT).show();
                 }
             }
         });
