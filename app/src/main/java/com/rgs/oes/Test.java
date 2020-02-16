@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -120,7 +121,6 @@ public class Test extends AppCompatActivity {
                 Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
             }
         }
-
         radioquestionGroup.clearCheck();
     }
 
@@ -135,7 +135,9 @@ public class Test extends AppCompatActivity {
         ((LinearLayout) findViewById(R.id.lyt_back)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backStep(current_step);
+                if (current_step != 1){backStep(current_step);} else {
+                    Toast.makeText(Test.this, "First question", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -157,14 +159,19 @@ public class Test extends AppCompatActivity {
             ViewAnimation.fadeOutIn(quest_tv);
         }
 
+        Log.d("ASDFfstep" , String.valueOf(progress));
+        Log.d("ASDFfstep" , String.valueOf(current_step));
+
+
         if (current_step >= MAX_STEP+1){
             Toast.makeText(this, "Last question", Toast.LENGTH_SHORT).show();
+            current_step--;
         } else {
             position++;
         }
         progressBar.setProgress(current_step);
-        starttest(position);
         setans(position -1);
+        starttest(position);
     }
 
     private void backStep(int progress) {
@@ -172,20 +179,21 @@ public class Test extends AppCompatActivity {
             progress--;
             current_step = progress;
             ViewAnimation.fadeOutIn(quest_tv);
-        }
-
-        if (current_step <= 1){
-            Toast.makeText(this, "First question", Toast.LENGTH_SHORT).show();
-        } else {
             position--;
         }
 
+        Log.d("ASDFbackstep" , String.valueOf(progress));
+        Log.d("ASDFbackstep" , String.valueOf(current_step));
+
+//        if (current_step > 1){
+//
+//        }
+        Log.d("ASDFbackstep" , String.valueOf(position));
+
         progressBar.setProgress(current_step);
         if (position >= 0){
-            starttest(position);
             setans(position -1);
-        } else {
-            Toast.makeText(this, "First Question", Toast.LENGTH_SHORT).show();
+            starttest(position);
         }
 
     }
