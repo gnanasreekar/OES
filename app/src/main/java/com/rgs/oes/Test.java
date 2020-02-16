@@ -32,7 +32,7 @@ public class Test extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView quest_tv,marks;
     int MAX_STEP, selectedId, position = 0;
-    int current_step = 1;
+    int current_step = 1,corect = 0;
     ArrayList<String> que = new ArrayList<String>();
     ArrayList<String> A = new ArrayList<String>();
     ArrayList<String> B = new ArrayList<String>();
@@ -115,10 +115,12 @@ public class Test extends AppCompatActivity {
         radioquestionGroup = findViewById(R.id.radioGroup);
         selectedId=radioquestionGroup.getCheckedRadioButtonId();
         radioans =(RadioButton)findViewById(selectedId);
-        if (selectedId == -1){
+        if (selectedId == -1){ //TODO: Tommor never dies
         } else {
             if (radioans.getText().equals(ans.get(pro))){
-                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+                corect++;
+            } else {
+                corect--;
             }
         }
         radioquestionGroup.clearCheck();
@@ -159,13 +161,10 @@ public class Test extends AppCompatActivity {
             ViewAnimation.fadeOutIn(quest_tv);
         }
 
-        Log.d("ASDFfstep" , String.valueOf(progress));
-        Log.d("ASDFfstep" , String.valueOf(current_step));
-
-
         if (current_step >= MAX_STEP+1){
-            Toast.makeText(this, "Last question", Toast.LENGTH_SHORT).show();
             current_step--;
+            setans(position);
+            Toast.makeText(this, corect+"", Toast.LENGTH_SHORT).show();
         } else {
             position++;
         }
@@ -181,14 +180,6 @@ public class Test extends AppCompatActivity {
             ViewAnimation.fadeOutIn(quest_tv);
             position--;
         }
-
-        Log.d("ASDFbackstep" , String.valueOf(progress));
-        Log.d("ASDFbackstep" , String.valueOf(current_step));
-
-//        if (current_step > 1){
-//
-//        }
-        Log.d("ASDFbackstep" , String.valueOf(position));
 
         progressBar.setProgress(current_step);
         if (position >= 0){
