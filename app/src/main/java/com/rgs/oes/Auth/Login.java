@@ -14,6 +14,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,9 +43,8 @@ public class Login extends AppCompatActivity {
     static public String Name, Rollno, Phoneno, Fullname, Email, Gender, Year, Branch, UID, Role;
     CountDownTimer mCountDownTimer;
     String userEmail;
-
-
-
+    LinearLayout linearLayout,lyt_progress;
+    RelativeLayout relativeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +53,11 @@ public class Login extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
 
+        lyt_progress = (LinearLayout) findViewById(R.id.login_loading);
+        lyt_progress.setVisibility(View.GONE);
         login_username = findViewById(R.id.username);
         login_password = findViewById(R.id.password);
+        relativeLayout = findViewById(R.id.login_layout);
         signup = (TextView) findViewById(R.id.sign_up);
         button_login = findViewById(R.id.login);
 
@@ -65,6 +68,9 @@ public class Login extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     Toast.makeText(Login.this, "Please wait...", Toast.LENGTH_SHORT).show();
+                    lyt_progress.setVisibility(View.VISIBLE);
+                    lyt_progress.setAlpha(1.0f);
+                    relativeLayout.setVisibility(View.GONE);
                     new Firebaseretrive().execute();
                 } else {
                     firebaseAuth.removeAuthStateListener(authStateListener);
@@ -101,6 +107,9 @@ public class Login extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
+                                lyt_progress.setVisibility(View.VISIBLE);
+                                lyt_progress.setAlpha(1.0f);
+                                relativeLayout.setVisibility(View.GONE);
                                 new Firebaseretrive().execute();
                             }
                         }

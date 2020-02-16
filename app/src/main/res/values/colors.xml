@@ -5,6 +5,7 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="dark">#424242</color>
+    <color name="load">#2c2c2c</color>
     <color name="kindadark">#bdbdbd</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#FF9800</color>    //Textinput outline colour
 

@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_grey_900"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/login_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="@color/load"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:gravity="center"
+            android:text="Logging in..."
+            android:id="@+id/login_text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorAccent" />
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/gif" />
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/login_layout"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -139,4 +166,4 @@
 
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alexfu.countdownview.CountDownView;
-import com.google.android.gms.dynamic.IFragmentWrapper;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,12 +28,9 @@ import java.util.ArrayList;
 
 public class Test extends AppCompatActivity {
 
-    private CountDownView countDown;
-    private TextView textView;
-    private TextInputEditText question;
     private ProgressBar progressBar;
-    private TextView quest_tv;
-    int MAX_STEP, selectedId, pos = 0;
+    private TextView quest_tv,marks;
+    int MAX_STEP, selectedId, position = 0;
     int current_step = 1;
     ArrayList<String> que = new ArrayList<String>();
     ArrayList<String> A = new ArrayList<String>();
@@ -44,8 +39,9 @@ public class Test extends AppCompatActivity {
     ArrayList<String> D = new ArrayList<String>();
     ArrayList<String> ans = new ArrayList<String>();
     ArrayList<String> key = new ArrayList<String>();
+    ArrayList<String> marksa = new ArrayList<String>();
     private RadioGroup radioquestionGroup;
-    private RadioButton radioSexButton;
+    private RadioButton radioans;
     RadioButton Ar,Br,Cr,Dr;
     String keyi;
 
@@ -87,6 +83,7 @@ public class Test extends AppCompatActivity {
                     C.add(childDataSnapshot.child("c").getValue().toString());
                     D.add(childDataSnapshot.child("d").getValue().toString());
                     ans.add(childDataSnapshot.child("ans").getValue().toString());
+                    marksa.add(childDataSnapshot.child("marks").getValue().toString());
                     key.add(childDataSnapshot.getKey());
                 }
                 steppedprogress();
@@ -104,6 +101,7 @@ public class Test extends AppCompatActivity {
 
         if (pos <= MAX_STEP-1) {
             quest_tv.setText(que.get(pos));
+            marks.setText("Marks: " + marksa.get(pos));
             Ar.setText(A.get(pos));
             Br.setText(B.get(pos));
             Cr.setText(C.get(pos));
@@ -115,10 +113,10 @@ public class Test extends AppCompatActivity {
     public void setans(int pro){
         radioquestionGroup = findViewById(R.id.radioGroup);
         selectedId=radioquestionGroup.getCheckedRadioButtonId();
-        radioSexButton=(RadioButton)findViewById(selectedId);
+        radioans =(RadioButton)findViewById(selectedId);
         if (selectedId == -1){
         } else {
-            if (radioSexButton.getText().equals(ans.get(pro))){
+            if (radioans.getText().equals(ans.get(pro))){
                 Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
             }
         }
@@ -128,7 +126,7 @@ public class Test extends AppCompatActivity {
 
     private void steppedprogress() {
         quest_tv = (TextView) findViewById(R.id.question);
-
+        marks = findViewById(R.id.marks);
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setMax(MAX_STEP);
         progressBar.setProgress(current_step);
@@ -162,11 +160,11 @@ public class Test extends AppCompatActivity {
         if (current_step >= MAX_STEP+1){
             Toast.makeText(this, "Last question", Toast.LENGTH_SHORT).show();
         } else {
-            pos++;
+            position++;
         }
         progressBar.setProgress(current_step);
-        starttest(pos);
-        setans(pos-1);
+        starttest(position);
+        setans(position -1);
     }
 
     private void backStep(int progress) {
@@ -177,15 +175,15 @@ public class Test extends AppCompatActivity {
         }
 
         if (current_step <= 1){
-            Toast.makeText(this, "Last question", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "First question", Toast.LENGTH_SHORT).show();
         } else {
-            pos--;
+            position--;
         }
 
         progressBar.setProgress(current_step);
-        if (pos >= 0){
-            starttest(pos);
-            setans(pos-1);
+        if (position >= 0){
+            starttest(position);
+            setans(position -1);
         } else {
             Toast.makeText(this, "First Question", Toast.LENGTH_SHORT).show();
         }
